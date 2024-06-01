@@ -26,9 +26,9 @@ module.exports = () => {
       new WebpackPwaManifest({
         inject: true,
         fingerprints: false,
-        name: 'My Progressive Web App',
-        short_name: 'MyPWA',
-        description: 'My awesome Progressive Web App!',
+        name: 'Just Another Text Editor',
+        short_name: 'J.A.T.E',
+        description: 'Takes notes with JavaScript syntax highlighting',
         background_color: '#ffffff',
         theme_color: '#ffffff',
         start_url: '/',
