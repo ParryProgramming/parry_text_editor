@@ -12,7 +12,7 @@ const initdb = async () =>
     },
   });
 
-
+// methods to interact with the database
 export const putDb = async (content) => {
   console.log('Post to the database');
 
@@ -33,7 +33,7 @@ export const putDb = async (content) => {
   console.log('Data saved to the database', result);
 };
 
-
+// method to get data from the database
 export const getDb = async () => {
   console.log('GET from the database');
 

@@ -3,7 +3,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-
+//adding workbox-webpack-plugin for a service worker and manifest file
 module.exports = () => {
   return {
     mode: 'development',
@@ -11,10 +11,12 @@ module.exports = () => {
       main: './src/js/index.js',
       install: './src/js/install.js'
     },
+    //creates the destination folder for the output
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
+    //generating html file
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
@@ -25,7 +27,7 @@ module.exports = () => {
         swDest: 'src-sw.js',
       }),
 
-
+      //generating manifest file for a pwa
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -38,6 +40,7 @@ module.exports = () => {
         publicPath: './',
         icons: [
           {
+            //creates logo image into the assets folder
             src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
