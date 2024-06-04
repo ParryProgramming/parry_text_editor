@@ -11,58 +11,54 @@ module.exports = () => {
       main: './src/js/index.js',
       install: './src/js/install.js'
     },
-    
     output: {
-      filename: '[name]bundle.js',
+      filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-     
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Text-Editor',
+        title: 'Webpack Plugin',
       }),
-      
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+
+
       new WebpackPwaManifest({
-        inject: true,
         fingerprints: false,
+        inject: true,
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E',
-        description: 'Takes notes with JavaScript syntax highlighting',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
-        start_url: '/',
-        publicPath: '/',
-        display: 'standalone',
+        description: 'Take notes with JavaScript syntax highlighting!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
         icons: [
           {
-            
             src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
       }),
-
-     
-      new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'src-sw.js'
-      })
     ],
 
-    
     module: {
       rules: [
-       
         {
-          
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
         {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+        },
+        {
           test: /\.m?js$/,
-          exclude: /node_modules/,
+          exclude: /(node_modules|bower_components)/,
           use: {
             loader: 'babel-loader',
             options: {

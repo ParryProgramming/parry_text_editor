@@ -1,5 +1,5 @@
 import { Workbox } from 'workbox-window';
-import Editor from './editor';
+import {Editor} from './editor';
 import './database';
 import '../css/style.css';
 
@@ -17,15 +17,15 @@ const loadSpinner = () => {
   main.appendChild(spinner);
 };
 
-const editor = new Editor();
+const editor = new Editor().editor;
 
 if (typeof editor === 'undefined') {
   loadSpinner();
 }
 
-// Check if service workers are supported
+
 if ('serviceWorker' in navigator) {
-  // register workbox service worker
+  
   const workboxSW = new Workbox('/src-sw.js');
   workboxSW.register();
 } else {
