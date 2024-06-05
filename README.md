@@ -10,7 +10,7 @@ This is a text editor. Designed so you will get a chance to work editing on the 
 
 ## Example
 
-<img src="../parry_text_editor/client/src/images/screenshot.png"
+<img src="./assets/screenshot.png"
      alt="textEditor">
 
 ## Link
